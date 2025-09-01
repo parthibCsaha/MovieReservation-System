@@ -76,3 +76,16 @@ classDiagram
     Reservation "1" -- "many" ReservationSeat : includes >
     Seat "1" -- "many" ReservationSeat : booked in >
     Showtime "1" -- "many" Reservation : linked >
+```
+---
+## Technologies Used
+
+- Java 21
+- Spring Boot
+- Spring Data JPA
+- Spring Security with JWT
+- PostgreSQL
+- Lombok
+- BCrypt for password hashing
+- Maven
+---
