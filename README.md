@@ -77,7 +77,7 @@ classDiagram
     Seat "1" -- "many" ReservationSeat : booked in >
     Showtime "1" -- "many" Reservation : linked >
 ```
----
+-----
 ## Technologies Used
 
 - Java 21
@@ -89,3 +89,20 @@ classDiagram
 - BCrypt for password hashing
 - Maven
 ---
+## API Endpoints
+
+# Authentication (/api/auth)
+- POST /api/auth/register → Register a new user
+- POST /api/auth/login → Authenticate user & get JWT
+
+# Movies (/api/movies)
+- GET /api/movies → Get all movies
+- GET /api/movies/{id} → Get movie details by ID
+- POST /api/movies → Add a new movie (Admin only)
+- PUT /api/movies/{id} → Update movie (Admin only)
+- DELETE /api/movies/{id} → Delete movie (Admin only)
+
+# Reservations (/api/reservations)
+- POST /api/reservations → Reserve seats (User must be logged in with JWT)
+- GET /api/reservations/user/{userId} → Get all reservations for a user (secured, only the same user or admin can access)
+-----
