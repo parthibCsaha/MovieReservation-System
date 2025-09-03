@@ -21,6 +21,8 @@ This project is a RESTful backend for a **Movie Reservation System** built with 
   - Discount Coupons.
   - Notifications (Email/SMS).
   - Seat Recommendation Engine.
+- **Error Handling:**
+  - This project uses a centralized Global Exception Handler (@RestControllerAdvice) to ensure all errors are returned in a consistent JSON format.
 
 ---
 
