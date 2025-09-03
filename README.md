@@ -16,14 +16,13 @@ This project is a RESTful backend for a **Movie Reservation System** built with 
 - **Reservation Management:**
   - Users can view their past and upcoming reservations.
   - Admins can view all reservations.
+- **Error Handling:**
+  - This project uses a centralized Global Exception Handler (@RestControllerAdvice) to ensure all errors are returned in a consistent JSON format.
 - **Additional Modules (for future extension):**
   - Payment Integration.
   - Discount Coupons.
   - Notifications (Email/SMS).
   - Seat Recommendation Engine.
-- **Error Handling:**
-  - This project uses a centralized Global Exception Handler (@RestControllerAdvice) to ensure all errors are returned in a consistent JSON format.
-
 ---
 
 ## Architecture & Entity Relationships
