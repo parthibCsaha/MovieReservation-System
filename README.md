@@ -30,47 +30,44 @@ This project is a RESTful backend for a **Movie Reservation System** built with 
   - The codebase is modular and ready for future extensions such as payment integration, discount coupons, notifications, or seat recommendation engine (not implemented yet).
 
 ---
-## 🏗️ System Architecture
 
+## 🏗️ System Architecture
 ```mermaid
-flowchart LR
-    subgraph Client["🛠️ API Client (Postman, curl)"]
-        APIClient["API Consumer"]
-    end
-    subgraph Server["⚙️ Backend (Spring Boot)"]
-        AuthController
-        MovieController
-        ReservationController
-        UserService
-        MovieService
-        ReservationService
-        SecurityLayer
+graph TD
+    subgraph Backend (Spring Boot)
         ExceptionHandler
+        SecurityLayer
+        AuthController --> UserService
+        MovieController --> MovieService
+        ReservationController --> ReservationService
+        ExceptionHandler --> AuthController
+        ExceptionHandler --> MovieController
+        ExceptionHandler --> ReservationController
+        SecurityLayer --> AuthController
+        SecurityLayer --> MovieController
+        SecurityLayer --> ReservationController
     end
-    subgraph DB["🗄 Database (PostgreSQL)"]
-        UserTable[(users)]
-        MovieTable[(movies)]
-        ShowtimeTable[(showtimes)]
-        SeatTable[(seats)]
-        ReservationTable[(reservations)]
-        ReservationSeatTable[(reservation_seats)]
+    subgraph Database (PostgreSQL)
+        users[(users)]
+        movies[(movies)]
+        showtimes[(showtimes)]
+        seats[(seats)]
+        reservations[(reservations)]
+        reservation_seats[(reservation_seats)]
     end
-    APIClient --> AuthController
+    UserService --> users
+    MovieService --> movies
+    MovieService --> showtimes
+    MovieService --> seats
+    ReservationService --> reservations
+    ReservationService --> reservation_seats
+    ReservationService --> seats
+    ReservationService --> showtimes
+    APIClient["API Client (Postman, curl)"] --> AuthController
     APIClient --> MovieController
     APIClient --> ReservationController
-    AuthController --> UserService
-    MovieController --> MovieService
-    ReservationController --> ReservationService
-    UserService --> UserTable
-    MovieService --> MovieTable
-    MovieService --> ShowtimeTable
-    MovieService --> SeatTable
-    ReservationService --> ReservationTable
-    ReservationService --> ReservationSeatTable
-    ReservationService --> SeatTable
-    SecurityLayer --> UserService
-    ExceptionHandler --> Server
 ```
+
 ---
 ## 📊 Data Model (ER Diagram)
 ```mermaid
