@@ -32,41 +32,35 @@ This project is a RESTful backend for a **Movie Reservation System** built with 
 ---
 
 ## 🏗️ System Architecture
+
 ```mermaid
 graph TD
-    subgraph Backend (Spring Boot)
-        ExceptionHandler
-        SecurityLayer
-        AuthController --> UserService
-        MovieController --> MovieService
-        ReservationController --> ReservationService
-        ExceptionHandler --> AuthController
-        ExceptionHandler --> MovieController
-        ExceptionHandler --> ReservationController
-        SecurityLayer --> AuthController
-        SecurityLayer --> MovieController
-        SecurityLayer --> ReservationController
-    end
-    subgraph Database (PostgreSQL)
-        users[(users)]
-        movies[(movies)]
-        showtimes[(showtimes)]
-        seats[(seats)]
-        reservations[(reservations)]
-        reservation_seats[(reservation_seats)]
-    end
-    UserService --> users
-    MovieService --> movies
-    MovieService --> showtimes
-    MovieService --> seats
-    ReservationService --> reservations
-    ReservationService --> reservation_seats
+    ExceptionHandler[ExceptionHandler]
+    SecurityLayer[SecurityLayer]
+    AuthController[AuthController] --> UserService[UserService]
+    MovieController[MovieController] --> MovieService[MovieService]
+    ReservationController[ReservationController] --> ReservationService[ReservationService]
+    ExceptionHandler --> AuthController
+    ExceptionHandler --> MovieController
+    ExceptionHandler --> ReservationController
+    SecurityLayer --> AuthController
+    SecurityLayer --> MovieController
+    SecurityLayer --> ReservationController
+    UserService --> users[(users)]
+    MovieService --> movies[(movies)]
+    MovieService --> showtimes[(showtimes)]
+    MovieService --> seats[(seats)]
+    ReservationService --> reservations[(reservations)]
+    ReservationService --> reservation_seats[(reservation_seats)]
     ReservationService --> seats
     ReservationService --> showtimes
     APIClient["API Client (Postman, curl)"] --> AuthController
     APIClient --> MovieController
     APIClient --> ReservationController
+    classDef db fill:#222,stroke:#fff,stroke-width:2px;
+    class users,movies,showtimes,seats,reservations,reservation_seats db;
 ```
+
 
 ---
 ## 📊 Data Model (ER Diagram)
