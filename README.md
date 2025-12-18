@@ -134,7 +134,7 @@ sequenceDiagram
   AuthService ->> AuthService: Generate JWT  
   AuthService -->> Backend: Return JWT  
   Backend -->> APIClient: Send token + user info  
-  APIClient: Save JWT for future requests
+
 
 ```
 
