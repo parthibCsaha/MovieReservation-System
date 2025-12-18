@@ -23,7 +23,8 @@ This project is a RESTful backend for a **Movie Reservation System** built with 
   - Discount Coupons.
   - Notifications (Email/SMS).
   - Seat Recommendation Engine.
----## 🏗️ System Architecture
+---
+## 🏗️ System Architecture
 
 ```mermaid
 flowchart LR
@@ -40,7 +41,7 @@ flowchart LR
         SecurityLayer
         ExceptionHandler
     end
-    subgraph DB["🗄 Database (e.g., PostgreSQL)"]
+    subgraph DB["🗄 Database (PostgreSQL)"]
         UserTable[(users)]
         MovieTable[(movies)]
         ShowtimeTable[(showtimes)]
@@ -65,12 +66,10 @@ flowchart LR
     ExceptionHandler --> Server
 ```
 ---
-
 ## 📊 Data Model (ER Diagram)
 ```mermaid
 erDiagram
   USER ||--|{ RESERVATION : "makes"
-  USER }|--|| ROLE : "has"
   MOVIE ||--|{ SHOWTIME : "has"
   SHOWTIME ||--|{ SEAT : "offers"
   SHOWTIME ||--|{ RESERVATION : "receives"
@@ -79,7 +78,7 @@ erDiagram
 
   USER {
     Long id
-    String name
+    String username
     String email
     String password
     String role
@@ -88,7 +87,8 @@ erDiagram
     Long id
     String title
     String description
-    Integer duration
+    String posterUrl
+    String genre
   }
   SHOWTIME {
     Long id
@@ -111,11 +111,8 @@ erDiagram
     Long reservation_id
     Long seat_id
   }
-  ROLE {
-    Long id
-    String name
-  }
 ```
+
 ---
 
 ## 🔐 Authentication Flow
@@ -127,7 +124,7 @@ sequenceDiagram
   participant AuthService
   participant UserRepo
 
-  User ->> APIClient: Enter email + password  
+  User ->> APIClient: Enter username + password  
   APIClient ->> Backend: POST /api/auth/login  
   Backend ->> AuthService: Validate credentials  
   AuthService ->> UserRepo: Retrieve user data  
@@ -137,6 +134,7 @@ sequenceDiagram
   Backend -->> APIClient: Send token + user info  
   APIClient: Save JWT for future requests  
 ```
+
 ---
 
 ## ✅ API Endpoints
