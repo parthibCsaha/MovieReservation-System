@@ -23,11 +23,11 @@ This project is a RESTful backend for a **Movie Reservation System** built with 
   - Discount Coupons.
   - Notifications (Email/SMS).
   - Seat Recommendation Engine.
----
-## 🏗️ System Architecture
+---## 🏗️ System Architecture
+
 ```mermaid
 flowchart LR
-    subgraph Client["🛠️ API Client (Postman, Swagger UI, curl)"]
+    subgraph Client["🛠️ API Client (Postman, curl)"]
         APIClient["API Consumer"]
     end
     subgraph Server["⚙️ Backend (Spring Boot)"]
