@@ -1,28 +1,35 @@
-# Movie Reservation System 
+# 🎬 Movie Reservation System
 
+[![Java](https://img.shields.io/badge/Java-17%2B-blue.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Build](https://img.shields.io/badge/build-Maven-blue.svg)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
+
+---
+
+## 🚀 Project Overview
 This project is a RESTful backend for a **Movie Reservation System** built with **Spring Boot**, **Spring Data JPA**, **Spring Security with JWT**, and **PostgreSQL**. It enables users to browse movies, view showtimes, and reserve seats securely.  
+
+---
 
 ## Features
 
 - **User Authentication:**
   - **Registration & Login:** Users register and log in to obtain a JWT token.
-  - **Role-based Access:** Default role is **USER**, while **ADMIN** has elevated privileges.
+  - **Role-based Access:** Default role is **USER**; **ADMIN** can add and delete movies.
 - **Movie Management:**
-  - **Public Endpoints:** View movies and showtimes.
-  - **Admin Endpoints:** Create, update, and delete movies and showtimes.
+  - **Public Endpoints:** View movies (list and details).
+  - **Admin Endpoints:** Create and delete movies.
 - **Seat Reservation:**
   - Users can select available seats for a showtime and reserve them.
-  - Seat locking ensures no double booking.
+  - Seat locking ensures no double booking (uses transactional and pessimistic locking).
 - **Reservation Management:**
-  - Users can view their past and upcoming reservations.
-  - Admins can view all reservations.
+  - Users can view their own reservations.
 - **Error Handling:**
-  - This project uses a centralized Global Exception Handler (@RestControllerAdvice) to ensure all errors are returned in a consistent JSON format.
-- **Additional Modules (for future extension):**
-  - Payment Integration.
-  - Discount Coupons.
-  - Notifications (Email/SMS).
-  - Seat Recommendation Engine.
+  - Centralized Global Exception Handler (`@RestControllerAdvice`) ensures all errors are returned in a consistent JSON format.
+- **Extensible Design:**
+  - The codebase is modular and ready for future extensions such as payment integration, discount coupons, notifications, or seat recommendation engine (not implemented yet).
+
 ---
 ## 🏗️ System Architecture
 
@@ -163,7 +170,6 @@ sequenceDiagram
 - POST `/api/reservations` → Reserve seats
 - GET `/api/reservations` → List user reservations
 
----
 
 -----
 ## Technologies Used
